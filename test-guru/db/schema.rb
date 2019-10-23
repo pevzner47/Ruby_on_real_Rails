@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_132545) do
+ActiveRecord::Schema.define(version: 2019_10_23_080839) do
 
   create_table "answers", force: :cascade do |t|
     t.boolean "correct", default: false, null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_132545) do
     t.string "answer", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "answers_id"
+    t.index ["answers_id"], name: "index_questions_on_answers_id"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_132545) do
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "categories_id"
+    t.index ["categories_id"], name: "index_tests_on_categories_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,4 +51,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_132545) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "questions", "answers", column: "answers_id"
+  add_foreign_key "tests", "categories", column: "categories_id"
 end
