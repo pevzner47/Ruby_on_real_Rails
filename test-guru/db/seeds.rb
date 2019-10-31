@@ -26,3 +26,7 @@
                            { correct: false, question_id: questions[1].id}])
 
   users = User.create!([{ name: 'Beginer'}])
+  users_tests = UsersTest.create!([{ user_id: users[0].id, test_id: tests[0].id},
+                                   { user_id: users[0].id, test_id: tests[1].id},
+                                   { user_id: users[0].id, test_id: tests[2].id},
+                                   { user_id: users[0].id, test_id: tests[3].id}])
