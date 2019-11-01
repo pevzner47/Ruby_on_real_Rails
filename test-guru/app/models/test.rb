@@ -5,7 +5,7 @@ class Test < ApplicationRecord
 
   class << self
     def all_tests_in_category(category_name)
-      Test.joins("INNER JOIN categories ON categories.id = tests.category_id AND categories.name = '#{category_name}'", ).order('title DESC').select(:title) #здесь почему то не получилось через '?'
+      Test.joins("INNER JOIN categories ON categories.id = tests.category_id").order('title DESC').where('categories.name = ?', category_name).pluck(:title)
     end
   end
 end
