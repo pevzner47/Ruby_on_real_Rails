@@ -3,11 +3,7 @@ class User < ApplicationRecord
   has_many :tests, through: :users_tests
 
   def passes_tests(level)
-    connections = UsersTest.where(user_id: self.id)
-    return puts 'this user has not started any tests yet' if connections.nil?
-    tests_id = []
-    connections.each {|connection| tests_id << connection.test_id}
-    tests = Test.where(level: level, id: tests_id)
-    tests
+    tests = Test.joins("JOIN users_tests ON users_tests.user_id = #{ self.id.to_s} AND users_tests.test_id = tests.id").where('tests.level = ?', level)
+                                                                # ^  и здесь не смог через "?"
   end
 end
