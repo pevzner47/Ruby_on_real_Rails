@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
   categories = Category.create!([
-                                {title: 'Ruby'},
-                                {title: 'HTML'},
-                                {title: 'JS'},
-                                {title: 'CSS'}])
+                                {name: 'Ruby'},
+                                {name: 'HTML'},
+                                {name: 'JS'},
+                                {name: 'CSS'}])
 
   tests = Test.create!([{ title: 'Ruby', level: 0, category_id: categories[0].id },
                       { title: 'Ruby on Rails', level: 1, category_id: categories[0].id },
