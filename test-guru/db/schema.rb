@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_11_02_225916) do
     t.index ["user_id"], name: "index_users_tests_on_user_id"
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "tests", "categories"
   add_foreign_key "users_tests", "tests"
   add_foreign_key "users_tests", "users"
