@@ -33,3 +33,4 @@
                                    { user_id: users[0].id, test_id: tests[1].id},
                                    { user_id: users[0].id, test_id: tests[2].id},
                                    { user_id: users[0].id, test_id: tests[3].id}])
+                                   #не понял как передать вместо id объекты модели
