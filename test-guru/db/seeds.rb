@@ -16,21 +16,21 @@
                       { name: 'bob@example.com'},
                       { name: 'jane@example.com'}])
 
-  tests = Test.create!([{ title: 'Ruby', level: 0, author_id: users[1].id, category_id: categories[0].id },
-                        { title: 'Ruby on Rails', level: 1, author_id: users[2].id, category_id: categories[0].id },
-                        { title: 'HTML', level: 0, author_id: users[1].id, category_id: categories[1].id },
-                        { title: 'HTML 5', level: 1, author_id: users[2].id, category_id: categories[1].id },
-                        { title: 'JS', level: 0, author_id: users[1].id, category_id: categories[2].id },
-                        { title: 'CSS', level: 0, author_id: users[1].id, category_id: categories[3].id }])
+  tests = Test.create!([{ title: 'Ruby', level: 0, author_id: users[1].id, category: categories[0] },
+                        { title: 'Ruby on Rails', level: 1, author_id: users[2].id, category: categories[0] },
+                        { title: 'HTML', level: 0, author_id: users[1].id, category: categories[1] },
+                        { title: 'HTML 5', level: 1, author_id: users[2].id, category: categories[1] },
+                        { title: 'JS', level: 0, author_id: users[1].id, category: categories[2] },
+                        { title: 'CSS', level: 0, author_id: users[1].id, category: categories[3] }])
+                        #author не модель
 
-  questions = Question.create!([{ text: 'Класс это...', answer: 'Объект', test_id: tests[0].id},
-                                { text: 'Объект это...', answer: 'Класс', test_id: tests[0].id}])
+  questions = Question.create!([{ text: 'Класс это...', answer: 'Объект', test: tests[0]},
+                                { text: 'Объект это...', answer: 'Класс', test: tests[0]}])
 
-  answers = Answer.create!([{ correct: false, question_id: questions[0].id},
-                            { correct: false, question_id: questions[1].id}])
+  answers = Answer.create!([{ correct: false, question: questions[0]},
+                            { correct: false, question: questions[1]}])
 
-  users_tests = UsersTest.create!([{ user_id: users[0].id, test_id: tests[0].id},
-                                   { user_id: users[0].id, test_id: tests[1].id},
-                                   { user_id: users[0].id, test_id: tests[2].id},
-                                   { user_id: users[0].id, test_id: tests[3].id}])
-                                   #не понял как передать вместо id объекты модели
+  users_tests = UsersTest.create!([{ user: users[0], test: tests[0]},
+                                   { user: users[0], test: tests[1]},
+                                   { user: users[0], test: tests[2]},
+                                   { user: users[0], test: tests[3]}])
