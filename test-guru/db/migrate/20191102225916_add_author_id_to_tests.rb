@@ -1,6 +1,5 @@
 class AddAuthorIdToTests < ActiveRecord::Migration[6.0]
   def change
-    add_reference :tests, :user, foreign_key: true
-    rename_column :tests, :user_id, :author
+    add_reference :tests, :author, foreign_key: { to_table: :users}
   end
 end

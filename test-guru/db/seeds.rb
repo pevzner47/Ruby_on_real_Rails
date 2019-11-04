@@ -16,12 +16,12 @@
                       { name: 'bob@example.com'},
                       { name: 'jane@example.com'}])
 
-  tests = Test.create!([{ title: 'Ruby', level: 0, author: users[1].id, category_id: categories[0].id },
-                        { title: 'Ruby on Rails', level: 1, author: users[2].id, category_id: categories[0].id },
-                        { title: 'HTML', level: 0, author: users[1].id, category_id: categories[1].id },
-                        { title: 'HTML 5', level: 1, author: users[2].id, category_id: categories[1].id },
-                        { title: 'JS', level: 0, author: users[1].id, category_id: categories[2].id },
-                        { title: 'CSS', level: 0, author: users[1].id, category_id: categories[3].id }])
+  tests = Test.create!([{ title: 'Ruby', level: 0, author_id: users[1].id, category_id: categories[0].id },
+                        { title: 'Ruby on Rails', level: 1, author_id: users[2].id, category_id: categories[0].id },
+                        { title: 'HTML', level: 0, author_id: users[1].id, category_id: categories[1].id },
+                        { title: 'HTML 5', level: 1, author_id: users[2].id, category_id: categories[1].id },
+                        { title: 'JS', level: 0, author_id: users[1].id, category_id: categories[2].id },
+                        { title: 'CSS', level: 0, author_id: users[1].id, category_id: categories[3].id }])
 
   questions = Question.create!([{ text: 'Класс это...', answer: 'Объект', test_id: tests[0].id},
                                 { text: 'Объект это...', answer: 'Класс', test_id: tests[0].id}])
