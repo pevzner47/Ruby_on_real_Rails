@@ -16,12 +16,12 @@
                       { name: 'bob@example.com'},
                       { name: 'jane@example.com'}])
 
-  tests = Test.create!([{ title: 'Ruby', level: 0, author_id: users[1].id, category: categories[0] },
-                        { title: 'Ruby on Rails', level: 1, author_id: users[2].id, category: categories[0] },
-                        { title: 'HTML', level: 0, author_id: users[1].id, category: categories[1] },
-                        { title: 'HTML 5', level: 1, author_id: users[2].id, category: categories[1] },
-                        { title: 'JS', level: 0, author_id: users[1].id, category: categories[2] },
-                        { title: 'CSS', level: 0, author_id: users[1].id, category: categories[3] }])
+  tests = Test.create!([{ title: 'Ruby', level: 0, author: users[1], category: categories[0] },
+                        { title: 'Ruby on Rails', level: 1, author: users[2], category: categories[0] },
+                        { title: 'HTML', level: 0, author: users[1], category: categories[1] },
+                        { title: 'HTML 5', level: 1, author: users[2], category: categories[1] },
+                        { title: 'JS', level: 0, author: users[1], category: categories[2] },
+                        { title: 'CSS', level: 0, author: users[1], category: categories[3] }])
                         #author не модель
 
   questions = Question.create!([{ text: 'Класс это...', answer: 'Объект', test: tests[0]},
