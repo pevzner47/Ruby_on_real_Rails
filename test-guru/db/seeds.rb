@@ -12,23 +12,26 @@
                                 {name: 'JS'},
                                 {name: 'CSS'}])
 
-  users = User.create!([{ name: 'john@example.com'},
-                      { name: 'bob@example.com'},
-                      { name: 'jane@example.com'}])
+  users = User.create!([{ name: 'John', email: 'john@example.com'},
+                      { name: 'Bob', email: 'bob@example.com'},
+                      { name: 'Jane', email: 'jane@example.com'}])
 
   tests = Test.create!([{ title: 'Ruby', level: 0, author: users[1], category: categories[0] },
-                        { title: 'Ruby on Rails', level: 1, author: users[2], category: categories[0] },
+                        { title: 'Ruby on Rails', level: 4, author: users[2], category: categories[0] },
                         { title: 'HTML', level: 0, author: users[1], category: categories[1] },
-                        { title: 'HTML 5', level: 1, author: users[2], category: categories[1] },
-                        { title: 'JS', level: 0, author: users[1], category: categories[2] },
+                        { title: 'HTML 5', level: 10, author: users[2], category: categories[1] },
+                        { title: 'JS', level: 5, author: users[1], category: categories[2] },
                         { title: 'CSS', level: 0, author: users[1], category: categories[3] }])
-                        #author не модель
 
   questions = Question.create!([{ text: 'Класс это...', answer: 'Объект', test: tests[0]},
                                 { text: 'Объект это...', answer: 'Класс', test: tests[0]}])
 
   answers = Answer.create!([{ correct: false, question: questions[0]},
-                            { correct: false, question: questions[1]}])
+                            { correct: false, question: questions[0]},
+                            { correct: true, question: questions[0]},
+                            { correct: false, question: questions[1]},
+                            { correct: false, question: questions[1]},
+                            { correct: true, question: questions[1]}])
 
   users_tests = UsersTest.create!([{ user: users[0], test: tests[0]},
                                    { user: users[0], test: tests[1]},
