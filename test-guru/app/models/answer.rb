@@ -3,11 +3,11 @@ class Answer < ApplicationRecord
 
   scope :right_ones, -> { where(correct: true) }
 
-  validate :validate_answers_number
+  validate :validate_answers_number, on: :create
 
-  private
+  #private
 
   def validate_answers_number
-    errors.add(:question) if !(1..4).include?(self.question.answers.count) #errors.add(:question) if
+    errors.add(:question) if self.question.answers.count < 0 || self.question.answers.count >= 4
   end
 end

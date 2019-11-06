@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   def passes_tests(level)
-    self.tests.where(tests: { level: level})
+    tests.with_difficulty_level(level)
   end
   #в документации написано, что scope методы из user можно вызывать либо на классе User либо на связи состоящей из объектов user
 end
