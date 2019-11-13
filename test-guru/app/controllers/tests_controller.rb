@@ -1,5 +1,4 @@
 class TestsController < ApplicationController
-
   before_action :find_test, only: %i[show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
@@ -25,8 +24,6 @@ class TestsController < ApplicationController
   end
 
   def show
-    title = Test.first.title
-
     #render inline: '<%= title %>'
     render inline: '<%= @test.title %>'
 
@@ -54,7 +51,7 @@ class TestsController < ApplicationController
   private
 
   def test_params
-    params.require(:test).permit(:title, :level)
+    params.require(:test).permit(:title, :level, :category_id, :author_id)
   end
 
   def find_test
