@@ -1,0 +1,23 @@
+<h1>Create new question</h1>
+
+<form action="/tests/1/questions" method="post">
+
+  <input name="authenticity_token" value="<%= form_authenticity_token =%>" type="hidden">
+
+  <p>
+    <label for="question_text">Question:</label>
+    <input type="text" name="question[text]" id="question_text">
+  </p><br>
+
+  <p>
+    <label for="right_answer">Answer:</label>
+    <input type="text" name="question[answer]" id="right_answer">
+  </p><br>
+
+  <p>
+    <label for="test_id">to test:</label>
+    <input type="text" name="question[test_id]" id="test_id" value="1" readonly>
+  </p><br>
+
+  <input type="submit" value="Create">
+</form>

@@ -2,6 +2,8 @@ class TestsController < ApplicationController
 
   before_action :find_test, only: %i[show]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
+
   def index
 
     # render html: '<h1>All tests</h1>'.html_safe
@@ -59,5 +61,8 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
+  def rescue_with_test_not_found
+    render plain: 'Test not found'
+  end
 
 end
