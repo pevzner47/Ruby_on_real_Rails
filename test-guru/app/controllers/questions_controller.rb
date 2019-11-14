@@ -15,23 +15,21 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create(question_params)
-    question.test_id = @test.id
-    question.save
+    question = @test.questions.create(question_params)
     render plain: question.inspect
   end
 
   def new; end
 
   def destroy
-    @question.delete
+    @question.destroy
     render html: "question with id = #{@question.id} deleted".html_safe
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:text, :answer)
+    params.require(:question).permit(:text)
   end
 
   def find_test
