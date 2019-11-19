@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: %i[show]
+  before_action :find_test, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -17,32 +17,50 @@ class TestsController < ApplicationController
     #   format.html { render plain: 'All tests'}
     #   format.json { render json: { tests: Test.all } }
 
-    result = ["Class: #{params.class}", "Parameters: #{params.inspect}"]
-
-    render plain: result.join("\n")
+    # result = ["Class: #{params.class}", "Parameters: #{params.inspect}"]
+    #
+    # render plain: result.join("\n")
+    @tests = Test.all
 
   end
 
   def show
     #render inline: '<%= title %>'
-    render inline: '<%= @test.title %>'
+    #render inline: '<%= @test.title %>'
 
     #redirect_to root_path
   end
 
-  def new; end
+  def new
+    @test = Test.new
+  end
+
+  def edit; end
 
   def create
+    @test = Test.new(test_params)
+    if @test.save then
+      redirect_to @test
+    else
+      render :new
+    end
+  end
 
-    test = Test.create(test_params)
+  def update
+    if @test.update(test_params) then
+      redirect_to @test
+    else
+      render :edit
+    end
+  end
 
-    render plain: test.inspect
-
+  def destroy
+    @test.destroy
+    redirect_to tests_path
   end
 
   def search
     result = ["Class: #{params.class}", "Parameters: #{params.inspect}"]
-
     render plain: result.join("\n")
   end
 
