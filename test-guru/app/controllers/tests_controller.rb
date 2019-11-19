@@ -25,10 +25,7 @@ class TestsController < ApplicationController
   end
 
   def show
-    #render inline: '<%= title %>'
-    #render inline: '<%= @test.title %>'
-
-    #redirect_to root_path
+    @questions = @test.questions
   end
 
   def new

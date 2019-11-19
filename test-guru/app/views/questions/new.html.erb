@@ -1,13 +1,3 @@
-<h1>Create new question</h1>
-
-<form action="<%= "/tests/" + params[:test_id].to_s + "/questions"=%>" method="post">
-
-  <input name="authenticity_token" value="<%= form_authenticity_token =%>" type="hidden">
-
-  <p>
-    <label for="question_text">Question:</label>
-    <input type="text" name="question[text]" id="question_text">
-  </p><br>
-
-  <input type="submit" value="Create">
-</form>
+<%= question_header(params[:action], params[:test_id]) %>
+<%= render 'form' %>
+<%= link_to 'Back', test_questions_path %>

@@ -1,0 +1,12 @@
+<h1>Questions from the test "<%= @test.title %>" </h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th colspan="3">Actions</th>
+
+  <%= render @questions %>
+</table>
+
+<%= render 'shared/add_question_button', test: @test %>
+<%= link_to 'To tests', tests_path %>
