@@ -7,6 +7,6 @@ module QuestionsHelper
   end
 
   def question_header(question)
-    "#{ACTION_HEADER[question.persisted?]} '#{Test.find(question.test_id).title}' Question"
+    "#{ACTION_HEADER[question.persisted?]} '#{question.test.title}' Question"
   end
 end
