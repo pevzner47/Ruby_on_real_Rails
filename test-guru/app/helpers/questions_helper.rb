@@ -1,5 +1,5 @@
 module QuestionsHelper
-  MAX_NUMBER_OF_QUESTIONS = 4
+  MAX_NUMBER_OF_QUESTIONS = 10
   ACTION_HEADER = { false => "Create New", true => "Edit"}
 
   def can_add_question_to_this_test?(test)

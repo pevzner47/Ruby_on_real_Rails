@@ -13,27 +13,41 @@
                                 {name: 'CSS'}])
 
   users = User.create!([{ name: 'John', email: 'john@example.com'},
-                      { name: 'Bob', email: 'bob@example.com'},
-                      { name: 'Jane', email: 'jane@example.com'}])
+                        { name: 'Bob',  email: 'bob@example.com'},
+                        { name: 'Jane', email: 'jane@example.com'}])
 
-  tests = Test.create!([{ title: 'Ruby', level: 0, author: users[1], category: categories[0] },
-                        { title: 'Ruby on Rails', level: 4, author: users[2], category: categories[0] },
-                        { title: 'HTML', level: 0, author: users[1], category: categories[1] },
+  tests = Test.create!([{ title: 'Ruby', level: 0,  author: users[1], category: categories[0] },
+                        { title: 'Ruby on Rails', level: 4,  author: users[2], category: categories[0] },
+                        { title: 'HTML', level: 0,  author: users[1], category: categories[1] },
                         { title: 'HTML 5', level: 10, author: users[2], category: categories[1] },
-                        { title: 'JS', level: 5, author: users[1], category: categories[2] },
-                        { title: 'CSS', level: 0, author: users[1], category: categories[3] }])
+                        { title: 'JS', level: 5,  author: users[1], category: categories[2] },
+                        { title: 'CSS', level: 0,  author: users[1], category: categories[3] }])
 
-  questions = Question.create!([{ text: 'Класс это...', answer: 'Объект', test: tests[0]},
-                                { text: 'Объект это...', answer: 'Класс', test: tests[0]}])
+  questions = Question.create!([{ text: 'Класс это...',  test: tests[0]},
+                                { text: 'Объект это...', test: tests[0]},
+                                { text: 'JavaScript является подвидом Java?', test: tests[4]}])
 
-  answers = Answer.create!([{ correct: false, question: questions[0]},
-                            { correct: false, question: questions[0]},
-                            { correct: true, question: questions[0]},
-                            { correct: false, question: questions[1]},
-                            { correct: false, question: questions[1]},
-                            { correct: true, question: questions[1]}])
+  answers = Answer.create!([{ body: 'Хэш', correct: false, question: questions[0]},
+                            { body: 'Класс', correct: false, question: questions[0]},
+                            { body: 'Объект', correct: true,  question: questions[0]},
+                            { body: 'Строка', correct: false, question: questions[1]},
+                            { body: 'Все варианты неверны', correct: false, question: questions[1]},
+                            { body: 'Класс', correct: true,  question: questions[1]},
+                            { body: 'Да', correct: false, question: questions[2]},
+                            { body: 'Нет', correct: true, question: questions[2]},
+                            { body: 'Наоборот, Java - подвид JavaScript', correct: false,  question: questions[2]},])
 
-  users_tests = UsersTest.create!([{ user: users[0], test: tests[0]},
-                                   { user: users[0], test: tests[1]},
-                                   { user: users[0], test: tests[2]},
-                                   { user: users[0], test: tests[3]}])
+  # users_tests = UsersTest.create!([{ user: users[0], test: tests[0], current_question: questions[1], correct_questions: 1},
+  #                                  { user: users[0], test: tests[4], current_question: questions[0], correct_questions: 0}])
+
+# все таки нужно удалить user_tests и сосздать новую модель
+#   сюда напиши проблемы с которыми придеться столкнуться
+#
+#   что я должен проверить/сделать/переделать
+#
+#   нахожу где хоть что то есть о user_tests
+#     1) есть тут в сидах. заменить не трудно
+#     2) ассоциации двух моделей и метод в user
+#   исходя из этого смотрю что должен буду проверить
+#     1) основное - user.tests (и наверное наоборот)
+#   удаляю users_tests и заменяю его везде

@@ -7,6 +7,15 @@
   <strong>from test:</strong>
   <%= @question.test.title %>
 </p>
+
+<h2>Answers</h2>
+
+<%= render 'shared/add_answer_button', question: @question %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
 <%= link_to 'Edit', edit_question_path(@question)%>
 <%= link_to 'Back to this test', test_path(@question.test) %>
 <%= link_to 'Delete',
