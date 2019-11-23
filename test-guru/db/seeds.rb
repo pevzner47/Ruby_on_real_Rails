@@ -37,8 +37,8 @@
                             { body: 'Нет', correct: true, question: questions[2]},
                             { body: 'Наоборот, Java - подвид JavaScript', correct: false,  question: questions[2]},])
 
-  # users_tests = UsersTest.create!([{ user: users[0], test: tests[0], current_question: questions[1], correct_questions: 1},
-  #                                  { user: users[0], test: tests[4], current_question: questions[0], correct_questions: 0}])
+  test_passages = TestPassage.create!([{ user: users[0], test: tests[0], current_question: questions[1], correct_questions: 1},
+                                   { user: users[0], test: tests[4], current_question: questions[0], correct_questions: 0}])
 
 # все таки нужно удалить user_tests и сосздать новую модель
 #   сюда напиши проблемы с которыми придеться столкнуться
@@ -51,3 +51,5 @@
 #   исходя из этого смотрю что должен буду проверить
 #     1) основное - user.tests (и наверное наоборот)
 #   удаляю users_tests и заменяю его везде
+ # итог: users_tests работает, семя тоже
+ # дальше нужно настроить user.question

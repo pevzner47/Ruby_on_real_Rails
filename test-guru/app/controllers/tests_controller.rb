@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: [:show, :edit, :update, :destroy]
+  before_action :find_test, only: %i[show edit update destroy start]
+  before_action :set_user, only: %i[start]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -44,6 +45,11 @@ class TestsController < ApplicationController
     render plain: result.join("\n")
   end
 
+  def start
+    @user.tests.push(@test)
+    redirect_to @user.test_passage(@test)
+  end
+
   private
 
   def test_params
@@ -56,6 +62,10 @@ class TestsController < ApplicationController
 
   def rescue_with_test_not_found
     render plain: 'Test not found'
+  end
+
+  def set_user
+    @user = User.first# для простоты тест проходит первый user в бд
   end
 
 end
