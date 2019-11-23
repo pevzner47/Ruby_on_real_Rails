@@ -1,0 +1,7 @@
+.test_failed {
+  color: red;
+}
+
+.test_passed {
+  color: green;
+}
