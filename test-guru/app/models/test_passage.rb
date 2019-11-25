@@ -18,7 +18,7 @@ class TestPassage < ApplicationRecord
     (self.correct_questions.to_f / self.test.questions.count.to_f * 100).round
   end
 
-  def test_passed_seccessfully?
+  def passed?
     succes_rate >= 85
   end
 
@@ -39,14 +39,10 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    current_question ? test.questions.order(:id).where('id > ?', self.current_question.id).first : test.questions.first
+    new_record? ? test.questions.first : test.questions.order(:id).where('id > ?', self.current_question.id).first
   end
 
   def correct_answer
     self.current_question.answers.right_ones
-  end
-
-  def current_question_persisted?
-    self.current_question.present?
   end
 end

@@ -4,10 +4,10 @@ module TestPassagesHelper
   end
 
   def succes_rate_style
-    @test_passage.test_passed_seccessfully? ? 'test_passed' : 'test_failed'
+    @test_passage.passed? ? 'test_passed' : 'test_failed'
   end
 
   def result_message
-    @test_passage.test_passed_seccessfully? ? 'You have successfully passed the test' : 'Test failed'
+    @test_passage.passed? ? 'You have successfully passed the test' : 'Test failed'
   end
 end
