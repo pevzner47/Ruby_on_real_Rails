@@ -7,6 +7,7 @@ class TestsController < ApplicationController
 
   def index
     @tests = Test.all
+    byebug
   end
 
   def show
