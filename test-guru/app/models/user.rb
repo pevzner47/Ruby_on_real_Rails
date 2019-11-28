@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: "Test", foreign_key: "author_id", dependent: :nullify
 
   validates :name, presence: true
-  validates :email, presence: true
-  validates :email, uniqueness: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true,  uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  # validates :email,
+  # validates :email,
 
   has_secure_password
 

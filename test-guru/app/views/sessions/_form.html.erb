@@ -1,6 +1,6 @@
 <%= form_with url: sessions_path, local: true do |form| %>
 
- <%= logget_out? %>
+ <%= show_flash(:alert) %>
 
  <p>
    <%= form.label :email %>

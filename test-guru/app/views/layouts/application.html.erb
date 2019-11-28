@@ -13,7 +13,7 @@
     <% if logget_in? %>
       <p class="nav testguru"><%= link_to 'TestGuru', root_path %></p>
       <p class="nav user"> Welcome, <b><%= current_user.name %></b> Guru</p>
-      <p class="nav logout"><%= link_to 'Logout', logout_path %></p>
+      <p class="nav logout"><%= link_to 'Logout', logout_path, method: "delete" %></p>
     <% end %>
     <%= yield %>
   </body>
