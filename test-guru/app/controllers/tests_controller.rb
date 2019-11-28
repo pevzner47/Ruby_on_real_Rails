@@ -7,7 +7,6 @@ class TestsController < ApplicationController
 
   def index
     @tests = Test.all
-    byebug
   end
 
   def show
@@ -48,6 +47,7 @@ class TestsController < ApplicationController
   end
 
   def start
+    @user = current_user
     @user.tests.push(@test)
     redirect_to @user.test_passage(@test)
   end
