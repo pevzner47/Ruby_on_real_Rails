@@ -1,6 +1,10 @@
-require "digest/sha1"
-
 class User < ApplicationRecord
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :confirmable
 
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages
@@ -8,8 +12,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true,  uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-
-  has_secure_password
 
   def passes_tests(level)
     tests.with_difficulty_level(level)
