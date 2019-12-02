@@ -12,9 +12,9 @@
                                 {name: 'JS'},
                                 {name: 'CSS'}])
 
-  users = User.create!([{ name: 'John', email: 'john@example.com'},
-                        { name: 'Bob',  email: 'bob@example.com'},
-                        { name: 'Jane', email: 'jane@example.com'}])
+  users = User.create!([{ email: 'john@example.com'},
+                        { email: 'bob@example.com'},
+                        { email: 'jane@example.com'}])
 
   tests = Test.create!([{ title: 'Ruby', level: 0,  author: users[1], category: categories[0] },
                         { title: 'Ruby on Rails', level: 4,  author: users[2], category: categories[0] },
