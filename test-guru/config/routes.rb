@@ -11,10 +11,6 @@ Rails.application.routes.draw do
   #delete :logout, to: 'sessions#destroy'
 
   resources :tests, only: :index do
-    resources :questions, except: :index, shallow: true do
-      resources :answers, except: :index, shallow: true
-    end
-
     post :start, on: :member
   end
 
@@ -23,8 +19,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :tests
+    resources :tests do
+      resources :questions, except: :index, shallow: true do
+        resources :answers, except: :index, shallow: true
+      end
+    end
   end
+
+
 
   get '/tests/:category/:title', to: 'tests#search'
 end

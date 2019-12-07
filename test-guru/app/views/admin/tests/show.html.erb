@@ -10,7 +10,8 @@
 
 <p>
   <table>
-    <%= render partial: 'questions/question', collection: @test.questions %>
+    <% #= render partial: 'questions/question', collection: @test.questions %>
+    <%= render @test.questions  %>
   </table>
 </p>
 
