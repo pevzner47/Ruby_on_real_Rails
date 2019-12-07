@@ -17,7 +17,7 @@
 </ol>
 
 <%= link_to 'Edit', edit_question_path(@question)%>
-<%= link_to 'Back to this test', test_path(@question.test) %>
+<%= link_to 'Back to this test', admin_test_path(@question.test) %>
 <%= link_to 'Delete',
                 question_path(@question),
                 method: :delete,
