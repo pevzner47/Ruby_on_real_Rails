@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :category, optional: true #при удалении категрии связь с ней не проверяется
-  belongs_to :author, class_name: "User", optional: true #при удалении автора связь с ним не проверяется
+  belongs_to :author, class_name: "User", inverse_of: :tests, optional: true #при удалении автора связь с ним не проверяется
   has_many :questions, dependent: :nullify # при удалении теста вопрос остается а информация о тесте в вопросе обнуляется
   has_many :test_passages, dependent: :destroy # при удалении теста соединительная таблица удаляется qq
   has_many :users, through: :test_passages
