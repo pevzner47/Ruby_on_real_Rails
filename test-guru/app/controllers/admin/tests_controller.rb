@@ -12,14 +12,14 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def new
-    @test = current_user.tests.new
+    @test = current_user.created_tests.new
   end
 
   def edit; end
 
   def create
-    @test = current_user.tests.new(test_params)
-    @test.author = current_user
+    @test = current_user.created_tests.new(test_params)
+    #@test.author = current_user
     if @test.save
       redirect_to admin_test_path(@test)
     else
